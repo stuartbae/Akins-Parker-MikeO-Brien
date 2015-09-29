@@ -486,6 +486,7 @@ class SignupController
         $group_detail = $this->unfreezeGroupDetailSignup($app);
         $payment = $this->unfreezePaymentSignup($app);
 
+        $discount = 0;
         $deposit = $payment->fullpay ? 380 : 190;
         $total = $deposit * count($students) - $discount;
 
@@ -496,16 +497,23 @@ class SignupController
             $description = $user->getEmail();
             // Create the charge on Stripe's servers - this will charge the user's card
             try {
-            \Stripe\Stripe::setApiKey($app['stripe.api.key']);
-            $charge = \Stripe\Charge::create(array(
-                "amount" => $total_stripe, // amount in cents, again
-                "currency" => "usd",
-                "source" => $token,
-                "description" => $description));
 
-                $app['repository.user']->saveStripeCustomerId($user, $customer->id);
-                $redirect = $app['url_generator']->generate('homepage');
-                return $app->redirect($redirect);
+                    \Stripe\Stripe::setApiKey($app['stripe.api.key']);
+                    // Create a Customer
+                    $customer = \Stripe\Customer::create(array(
+                      "source" => $token,
+                      "description" => $user->getEmail())
+                    );
+
+                    $charge = \Stripe\Charge::create(array(
+                    "amount" => $total_stripe, // amount in cents, again
+                    "currency" => "usd",
+                    "source" => $token,
+                    "description" => $description));
+
+                    $app['repository.user']->saveStripeCustomerId($user, $customer->id);
+                    $redirect = $app['url_generator']->generate('homepage');
+                    return $app->redirect($redirect);
 
             } catch(\Stripe\Error\Card $e) {
                return $app->json($charge);
@@ -521,6 +529,7 @@ class SignupController
             'payment' => $payment,
             'total' => $total,
             'signup_for' => $signup_for,
+            'stripe_api_key' => $app['stripe.api.key'],
             );
         return $app['twig']->render('form.signup.payment.confirm.html.twig', $data);
     }
