@@ -13,8 +13,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 class Registration
 {
-   public $user;
-   public $address;
+   protected $user;
+   protected $address;
    public $students;
    public $groups;
    public $pool;
@@ -26,6 +26,8 @@ class Registration
       $this->groups = new ArrayCollection();
       $this->forms = new ArrayCollection();
    }
+
+
 
 }
 

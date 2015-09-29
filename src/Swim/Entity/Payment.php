@@ -7,7 +7,6 @@ class Payment
    public $paymentId;
    public $quantity;
    public $deposit;
-   public $earlyBirdDiscount;
    public $coupon;
    public $address;
    public $card_number;

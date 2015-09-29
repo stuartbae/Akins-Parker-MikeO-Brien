@@ -119,6 +119,7 @@ class UserRepository implements RepositoryInterface, UserProviderInterface
         return FALSE;
     }
 
+
     /**
      * Deletes the user.
      *
@@ -159,6 +160,11 @@ class UserRepository implements RepositoryInterface, UserProviderInterface
 
     }
 
+    public function saveStripeCustomerId($username, $customerId)
+    {
+
+    }
+
     public function getAddress($user_id)
     {
         // dump($user_id);
@@ -166,29 +172,7 @@ class UserRepository implements RepositoryInterface, UserProviderInterface
         return $userAddress ? $userAddress : FALSE;
     }
 
-    public function insertAddress($address)
-    {
-       // $addressData = array(
-       //  'user_id' => $address->getUserId();
-       //  'street' => $address->getUserId();
 
-       //  )
-       // $this->db->insert('addresses', (array) $address);
-
-    }
-
-    /**
-     * Returns a collection of users.
-     *
-     * @param integer $limit
-     *   The number of users to return.
-     * @param integer $offset
-     *   The number of users to skip.
-     * @param array $orderBy
-     *   Optionally, the order by info, in the $column => $direction format.
-     *
-     * @return array A collection of users, keyed by user id.
-     */
     public function findAll($limit, $offset = 0, $orderBy = array())
     {
         // Provide a default orderBy.

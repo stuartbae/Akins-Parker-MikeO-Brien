@@ -13,7 +13,7 @@
 <div class="well">
    <p><b>Login Name:</b> {{ user.email }}</p>
 </div>
-   {{ dump(user) }}
+   {# {{ dump(user) }} #}
 
 <div class="page-header"><h1><small>
    {% if signup_for=='host' %}
@@ -33,7 +33,7 @@
   <abbr title="Mobile">Mobile:</abbr>{{ user.mobile }}<br>
   <abbr title="Home">Home:</abbr>{{ user.mobile }}<br>
 </address>
-{{ dump(group_detail) }}
+{# {{ dump(group_detail) }} #}
 
 <div class="page-header"><h1><small>Student Info</small></h1></div>
 {% for student in students %}
@@ -42,17 +42,29 @@
    <div>Experience: {{ student.level }}-----FIX THIS -------</div>
    <div>Special Needs: {{ student.note }}</div>
    <div>Preferences: -----FIX THIS------
-   {{ dump(group) }}
+   {# {{ dump(group) }} #}
    </div>
-   <div>{{ dump(student) }}</div>
+   {# <div>{{ dump(student) }}</div> #}
 </p>
 {% endfor %}
 
 <div class="page-header"><h1><small>Payment Info</small></h1></div>
 <div class="well">
-   <h2>TOTAL: {{ total }} --- FIX THIS ----</h2>
+   <h2>TOTAL: {{ total }} </h2>
+{# {{ dump(payment) }} #}
+<form action="" method="POST">
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="pk_test_EWfWoz4QJTh8Oaf2LAQ58QJG"
+    data-amount="{{ total * 100 }}"
+    data-name="swim"
+    data-description="test"
+    data-image="/128x128.png"
+    data-locale="auto">
+  </script>
+</form>
 </div>
-{{ dump(payment) }}
-
-
 {% endblock form %}
+{% block script %}
+
+{% endblock script %}

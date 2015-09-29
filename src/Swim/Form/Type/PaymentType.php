@@ -14,12 +14,7 @@ class PaymentType extends AbstractType
     {
 
             $builder
-            // ->add('quantity', 'number', array(
-            //     'constraints' => new Assert\NotBlank(),
-            //     'label' => 'Quantity',
-            //     'readonly' => true,
-            //     'data' => 3,
-            // ))
+                       // ))
             ->add('fullpay', 'checkbox', array(
                 'label' => 'I would like to pay in full to take advantage of the discount',
                 'required' => false,
@@ -29,35 +24,35 @@ class PaymentType extends AbstractType
                 'required' => false,
                 'label' => 'Coupon Code',
             ))
-            ->add('address', new AddressType(), array(
-                'label' => 'Billing Address'
-                ))
-            ->add('card_number', 'text', array(
-                'constraints' => new Assert\CardScheme(array(
-                    'schemes' => array('AMEX', 'DISCOVER', 'MASTERCARD', 'VISA')
-                    )),
-                'label' => 'Card Number',
-                ))
-            ->add('exp_month', 'choice', array(
-                'constraints' => new Assert\NotBlank(),
-                'choice_list' => new ChoiceList(range(1,12), range(1,12)),
-                'placeholder' => 'Month',
-                'label' => 'Exp month',
-                ))
-            ->add('exp_year', 'choice', array(
-                'constraints' => new Assert\NotBlank(),
-                'choice_list' => new ChoiceList(range((int) date('Y'), (int) date('Y')+10), range((int)date('Y'), (int) date('Y')+10)),
-                'placeholder' => 'Exp year',
-                'label' => '',
-                ))
-            ->add('card_ccv', 'text', array(
-                'constraints' => new Assert\NotBlank(),
-                'label' => 'Security Code',
-            ))
-            ->add('card_name', 'text', array(
-                'constraints' => new Assert\NotBlank(),
-                'label' => 'Cardholder Name',
-            ))
+            // ->add('address', new AddressType(), array(
+            //     'label' => 'Billing Address'
+            //     ))
+            // ->add('card_number', 'text', array(
+            //     'constraints' => new Assert\CardScheme(array(
+            //         'schemes' => array('AMEX', 'DISCOVER', 'MASTERCARD', 'VISA')
+            //         )),
+            //     'label' => 'Card Number',
+            //     ))
+            // ->add('exp_month', 'choice', array(
+            //     'constraints' => new Assert\NotBlank(),
+            //     'choice_list' => new ChoiceList(range(1,12), range(1,12)),
+            //     'placeholder' => 'Month',
+            //     'label' => 'Exp month',
+            //     ))
+            // ->add('exp_year', 'choice', array(
+            //     'constraints' => new Assert\NotBlank(),
+            //     'choice_list' => new ChoiceList(range((int) date('Y'), (int) date('Y')+10), range((int)date('Y'), (int) date('Y')+10)),
+            //     'placeholder' => 'Exp year',
+            //     'label' => '',
+            //     ))
+            // ->add('card_ccv', 'text', array(
+            //     'constraints' => new Assert\NotBlank(),
+            //     'label' => 'Security Code',
+            // ))
+            // ->add('card_name', 'text', array(
+            //     'constraints' => new Assert\NotBlank(),
+            //     'label' => 'Cardholder Name',
+            // ))
             ->add('terms', 'checkbox', array(
                 'label' => 'I have read and agree to the Terms of Service',
                 ))

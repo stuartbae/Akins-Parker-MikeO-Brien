@@ -302,6 +302,7 @@ class SignupController
             if ($form->isValid()) {
                 $form_data = $form->getData();
                 $user = $form_data['user'];
+                $this->freezeUserSignup($app, $form_data);
                 //check the email is already been registered
                 if (false !== $app['repository.user']->findByUsername($user->getEmail())){
                     $message = 'The email address has already been registered!';
@@ -318,7 +319,6 @@ class SignupController
                 // } catch (\Exception $e) {
 
                 // }
-                $this->freezeUserSignup($app, $form_data);
                 $redirect = $app['url_generator']->generate('signup_student');
                 return $app->redirect($redirect);
             }
@@ -456,8 +456,8 @@ class SignupController
                 $new_payment = $form->getData();
                 // dump($new_payment);
                 $this->freezePaymentSignup($app, $new_payment);
-                    $redirect = $app['url_generator']->generate('signup_payment_confirm');
-                    return $app->redirect($redirect);
+                $redirect = $app['url_generator']->generate('signup_payment_confirm');
+                return $app->redirect($redirect);
             }
 
         }
@@ -486,7 +486,31 @@ class SignupController
         $group_detail = $this->unfreezeGroupDetailSignup($app);
         $payment = $this->unfreezePaymentSignup($app);
 
-        $total = 0;
+        $deposit = $payment->fullpay ? 380 : 190;
+        $total = $deposit * count($students) - $discount;
+
+
+        if ($request->isMethod('POST') === true) {
+            $token = $_POST['stripeToken'];
+            $total_stripe = $total * 100;
+            $description = $user->getEmail();
+            // Create the charge on Stripe's servers - this will charge the user's card
+            try {
+            \Stripe\Stripe::setApiKey($app['stripe.api.key']);
+            $charge = \Stripe\Charge::create(array(
+                "amount" => $total_stripe, // amount in cents, again
+                "currency" => "usd",
+                "source" => $token,
+                "description" => $description));
+
+                $app['repository.user']->saveStripeCustomerId($user, $customer->id);
+                $redirect = $app['url_generator']->generate('homepage');
+                return $app->redirect($redirect);
+
+            } catch(\Stripe\Error\Card $e) {
+               return $app->json($charge);
+            }
+        }
 
         $data = array(
             'user' => $user,
@@ -500,6 +524,14 @@ class SignupController
             );
         return $app['twig']->render('form.signup.payment.confirm.html.twig', $data);
     }
+
+
+
+       // Save the customer ID in your database so you can use it later
+
+       // Later...
+       // $customerId = getStripeCustomerId($user);
+
 
 
 
@@ -554,57 +586,6 @@ class SignupController
     {
         $app['session']->set('PAYMENT_SIGNUP', $signup_data);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
