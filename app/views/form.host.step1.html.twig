@@ -1,0 +1,144 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+  <div id="content">
+      <div class="wrap cf">
+        <div style="line-height:24px;">
+            <span >Register to host lessons at your private pool</span>
+        </div>
+        <div style="border-bottom-color: rgb(204, 204, 204);
+border-bottom-style: dotted;
+border-bottom-width: 1px;
+box-sizing: border-box;margin-bottom:8px;padding-bottom: 16px;
+width: 985.703px;">
+            <div style="font-size:13px;text-align:center;letter-spacing:4px;opacity: 0.6;
+">STEP 1 of 5</div>
+            <div class="progressbar">
+                <div class="progressbar_blue" style="width:20%"><span>20%</span></div>
+            </div>
+        </div>
+
+        <div style="padding:10px;padding-left:0px">{% set alertTypeAvaillable = [ 'info', 'success', 'warning', 'error'] %}
+                           {% for alert in alertTypeAvaillable %}
+                               {% for message in app.session.getFlashBag.get(alert) %}
+                                   <div class="alert alert-{{ alert }}" style="margin-left:0px;width: 975.844px;line-height:50px">
+                                       {{ message|trans }}
+                                   </div>
+                               {% endfor %}
+                           {% endfor %}</div>
+
+
+        <form action="" method="post" {{ form_enctype(form) }}>
+            <div style="line-height:20px;font-weight:bold;">Parent(s) Names(s)</div>
+
+            <div class="floating-box">{{ form_row(form.firstname) }}</div>
+            <div class="floating-box">{{ form_row(form.lastname) }}</div>
+            <div class="after-box"></div>
+
+            <div class="floating-box">{{ form_row(form.spouse_firstname) }}</div>
+            <div class="floating-box">{{ form_row(form.spouse_lastname) }}</div>
+            <div class="after-box"></div>
+
+            {{ form_row(form.mobile) }}
+            {{ form_row(form.home) }}
+            <label style="font-size:16px;font-weight:bold;display:inline-block;margin:20px;margin-left:0px;line-height:20px">Address</label>
+            {{ form_row(addressform.street) }}
+            {{ form_row(addressform.street2) }}
+            {{ form_row(addressform.city) }}
+            {{ form_row(addressform.state) }}
+            {{ form_row(addressform.zip) }}
+            {{ form_widget(addressform._token) }}
+
+            <div style="border-bottom-color: rgb(204, 204, 204);
+            border-bottom-style: dotted;
+            border-bottom-width: 1px;
+            box-sizing: border-box;margin-bottom:16px;padding-bottom: 0px;
+            width: 985.703px;">
+            <label style="font-size:20px;font-weight:bold;display:inline-block;margin:20px;margin-left:0px;line-height:20px">User Details</label>
+            </div>
+            <div style="font-size:16px;font-weight:bold;margin-top:10px;margin-bottom:;display:inline-block">
+            Email
+            </div>
+            <div style="font-size:14px;line-height:21px;margin-bottom:10.5px;padding-top:8.75px">This is your Username</div>
+
+            {{ form_errors(form.email) }}
+            {{ form_widget(form.email) }}
+            <div style="font-size:16px;font-weight:bold;margin-top:10px;margin-bottom:8px;line-height:20.8px;display:inline-block">Password</div>
+            {{ form_row(form.password) }}
+            {{ form_row(form.next) }}
+            {{ form_widget(form._token) }}
+        </form>
+
+  </div>
+  </div>
+<style>
+    .progressbar{
+    background-color: rgb(193, 193, 193);
+    background-image: none;
+    background-position: 50% 100%;
+    background-repeat: repeat-x;
+    border-bottom-color: rgb(193, 193, 193);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-image-outset: 0px;
+    border-image-repeat: stretch;
+    border-image-slice: 100%;
+    border-image-source: none;
+    border-image-width: 1;
+    border-left-color: rgb(193, 193, 193);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-right-color: rgb(193, 193, 193);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-top-color: rgb(193, 193, 193);
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-style: solid;
+    border-top-width: 1px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 4px 0px;
+    box-sizing: border-box;
+    color: rgb(0, 0, 0);
+    display: block;
+    font-family: 'Futura BT W01 Medium';
+    font-size: 16px;
+    height: 20px;
+    line-height: 20px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    text-align: left;
+    width: 975.844px;
+    }
+
+    .progressbar_blue{
+      background-color: rgb(50, 138, 202);
+      background-image: none;
+      background-repeat: repeat-x;
+      box-sizing: border-box;
+      color: rgb(255, 255, 255);
+      display: block;
+      font-family: helvetica, arial, sans-serif;
+      font-size: 13px;
+      height: 20px;
+      line-height: 20px;
+      text-align: right;
+      text-shadow: rgba(0, 0, 0, 0.498039) 0px 1px 1px;
+      width: 194.766px;
+      zoom: 1;
+    }
+    .control-label{
+        font-size: 14px;
+        line-height: 21px;
+    }
+    .floating-box {
+        float: left;
+        width:400px;
+        margin-right:80px;
+    }
+    .after-box {
+        clear: left;
+    }
+
+</style>
+{% endblock %}

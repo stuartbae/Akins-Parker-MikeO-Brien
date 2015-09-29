@@ -1,0 +1,19 @@
+{
+   "folders":
+   [
+      {
+         "follow_symlinks": true,
+         "path": ".",
+         "file_exclude_patterns": [],
+         "folder_exclude_patterns": ["cache"]
+      }
+
+   ],
+   "settings": {
+      "xdebug": {
+            "url": "http://localhost:8000/",
+               "path_mapping": {"/Users/sopae/Projects/AkinsParker/" : "/Users/sopae/Projects/AkinsParker/"}
+
+      }
+   }
+}

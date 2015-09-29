@@ -1,0 +1,10 @@
+{% extends 'layout.html.twig' %}
+{# {% set active = 'homepage' %} #}
+{% block content %}
+<ul>
+  <li><a href="{{ path('signup_user') }}">Host</a></li>
+  <li><a href="{{ path('signup_guest')}}">Guest</a></li>
+  <li><a href="{{ path('signup_user') }}">Placement</a></li>
+</ul>
+{% endblock %}
+

@@ -1,0 +1,108 @@
+{% extends 'layout.html.twig' %}
+{% set active = 'form' %}
+
+{% block content %}
+  <div id="main" role="main" class="container">
+    {% set alertTypeAvaillable = [ 'info', 'success', 'warning', 'error'] %}
+    {% for alert in alertTypeAvaillable %}
+        {% for message in app.session.getFlashBag.get(alert) %}
+            <div class="alert alert-{{ alert }}" >
+                <button class="close" data-dismiss="alert">×</button>
+                {{ message|trans }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+
+    <form action="" method="post" {{ form_enctype(form) }} class="form-horizontal">
+        <ul class="students" data-prototype="{{ form_widget(form.students.vars.prototype)|e}}"></ul>
+        <ul class="students">
+        {% for student in form.students %}
+            {{ form_row(student.name )}}
+            {{ form_row(student.dob_month )}}
+            {{ form_row(student.dob_day )}}
+            {{ form_row(student.dob_year )}}
+            {{ form_row(student.experience)}}
+            {{ form_row(student.note )}}
+        {% endfor %}
+        {{ form_widget(form._token) }}
+        </ul>
+        <a class="button" href="{{ path('signup_host',{'step': 1})}}">Prev</a></div>{{ form_row(form.next) }}
+
+    </form>
+  </div>
+
+{% endblock %}
+{% block script %}
+<script>
+    var $collectionHolder;
+
+
+    jQuery(document).ready(function() {
+
+        // Get the ul that holds the collection of tags
+        $collectionHolder = jQuery('ul.students');
+
+        // setup an "add a student" link
+        var $addStudentLink = jQuery('<a href="#" class="add_student_link">Add Student</a>');
+        var $newLinkLi = jQuery('<li></li>').append($addStudentLink);
+
+
+        // add a delete link to all of the existing tag form li elements
+        $collectionHolder.find('li').each(function() {
+            addStudentFormDeleteLink($(this));
+        });
+
+        // add the "add a tag" anchor and li to the tags ul
+        $collectionHolder.append($newLinkLi);
+
+        // count the current form inputs we have (e.g. 2), use that as the new
+        // index when inserting a new item (e.g. 2)
+        $collectionHolder.data('index', $collectionHolder.find(':input').length);
+        if ($collectionHolder.find(':input').length == 0) {
+            addStudentForm($collectionHolder, $newLinkLi);
+        }
+        $addStudentLink.on('click', function(e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // add a new tag form (see next code block)
+            addStudentForm($collectionHolder, $newLinkLi);
+        });
+    });
+
+    function addStudentForm($collectionHolder, $newLinkLi) {
+        // Get the data-prototype explained earlier
+        var prototype = $collectionHolder.data('prototype');
+
+        // get the new index
+        var index = $collectionHolder.data('index');
+
+        // Replace '__name__' in the prototype's HTML to
+        // instead be a number based on how many items we have
+        var newForm = prototype.replace(/__name__/g, index);
+
+        // increase the index with one for the next item
+        $collectionHolder.data('index', index + 1);
+
+        // Display the form in the page in an li, before the "Add a tag" link li
+        var $newFormLi = jQuery('<li></li>').append(newForm);
+        $newLinkLi.before($newFormLi);
+
+        // add a delete link to the new form
+        addStudentFormDeleteLink($newFormLi);
+    }
+
+    function addStudentFormDeleteLink($studentFormLi) {
+        var $removeFormA = jQuery('<a href="#">delete</a>');
+        $studentFormLi.append($removeFormA);
+
+        $removeFormA.on('click', function(e) {
+            // prevent the link from creating a "#" on the URL
+            e.preventDefault();
+
+            // remove the li for the tag form
+            $studentFormLi.remove();
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,226 @@
+<!doctype html>
+
+<!--[if lt IE 7]><html lang="en-US" class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html lang="en-US" class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html lang="en-US" class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en-US" class="no-js"><!--<![endif]-->
+
+    <head>
+        <meta charset="utf-8">
+
+                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Mike O Brien Swim  Login</title>
+
+                <meta name="HandheldFriendly" content="True">
+        <meta name="MobileOptimized" content="320">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+                <link rel="apple-touch-icon" href="http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/library/images/apple-touch-icon.png">
+        <link rel="icon" href="http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/favicon.png">
+        <!--[if IE]>
+            <link rel="shortcut icon" href="http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/favicon.ico">
+        <![endif]-->
+                <meta name="msapplication-TileColor" content="#f01d4f">
+        <meta name="msapplication-TileImage" content="http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/library/images/win8-tile-icon.png">
+            <meta name="theme-color" content="#121212">
+
+        <link rel="pingback" href="http://mobs.akinsparker.com/xmlrpc.php">
+
+                <meta name='robots' content='noindex,follow' />
+<link rel="alternate" type="application/rss+xml" title="Mike O Brien Swim &raquo; Feed" href="http://mobs.akinsparker.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Mike O Brien Swim &raquo; Comments Feed" href="http://mobs.akinsparker.com/comments/feed/" />
+        <script type="text/javascript">
+            window._wpemojiSettings = {"baseUrl":"http:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/mobs.akinsparker.com\/wp-includes\/js\/wp-emoji-release.min.js"}};
+            !function(a,b,c){function d(a){var c=b.createElement("canvas"),d=c.getContext&&c.getContext("2d");return d&&d.fillText?(d.textBaseline="top",d.font="600 32px Arial","flag"===a?(d.fillText(String.fromCharCode(55356,56812,55356,56807),0,0),c.toDataURL().length>3e3):(d.fillText(String.fromCharCode(55357,56835),0,0),0!==d.getImageData(16,16,1,1).data[0])):!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g;c.supports={simple:d("simple"),flag:d("flag")},c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.simple&&c.supports.flag||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+        </script>
+        <style type="text/css">
+img.wp-smiley,
+img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='googleFonts-css'  href='http://fonts.googleapis.com/css?family=Lato%3A400%2C700%2C400italic%2C700italic' type='text/css' media='all' />
+<link rel='stylesheet' id='shiftnav-css'  href='http://mobs.akinsparker.com/wp-content/plugins/shiftnav-responsive-mobile-menu/assets/css/shiftnav.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shiftnav-font-awesome-css'  href='http://mobs.akinsparker.com/wp-content/plugins/shiftnav-responsive-mobile-menu/assets/css/fontawesome/css/font-awesome.min.css' type='text/css' media='all' />
+<link rel='stylesheet' id='shiftnav-light-css'  href='http://mobs.akinsparker.com/wp-content/plugins/shiftnav-responsive-mobile-menu/assets/css/skins/light.css' type='text/css' media='all' />
+<link rel='stylesheet' id='bones-stylesheet-css'  href='http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/library/css/style.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='bones-ie-only-css'  href='http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/library/css/ie.css' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='http://mobs.akinsparker.com/wp-includes/js/jquery/jquery.js'></script>
+<script type='text/javascript' src='http://mobs.akinsparker.com/wp-includes/js/jquery/jquery-migrate.min.js'></script>
+<script type='text/javascript' src='http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/library/js/libs/modernizr.custom.min.js'></script>
+<link rel='canonical' href='http://mobs.akinsparker.com/sign-up/login/' />
+<link rel='shortlink' href='http://mobs.akinsparker.com/?p=173' />
+
+    <!-- ShiftNav CSS
+    ================================================================ -->
+    <style type="text/css" id="shiftnav-dynamic-css">
+
+#shiftnav-toggle-main{ background: #ffffff; color: #000000; }
+    @media only screen and (min-width:768px){ #shiftnav-toggle-main, .shiftnav-toggle-mobile{ display:none; } .shiftnav-wrap { padding-top:0 !important; } }
+    @media only screen and (max-width:767px){ #inner-header{ display:none !important; } }
+
+
+    /* Custom CSS Tweaks */
+    #shiftnav-toggle-main{
+background: #fff;
+    color: #000;
+}
+.shiftnav.shiftnav-skin-light {
+    font-size: 13px;
+    line-height: 1.3em;
+    background: #ffffff;
+    color: #000000;
+}
+.shiftnav.shiftnav-skin-light ul.shiftnav-menu li.menu-item > .shiftnav-target {
+    color: #000;
+    font-size: 16px;
+}
+
+    </style>
+    <!-- end ShiftNav CSS -->
+
+
+                        <script type="text/javascript" src="http://fast.fonts.net/jsapi/62b696df-7481-4b37-a366-89163bfee23a.js"></script>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.5.6/slick.css"/>
+    </head>
+
+    <body class="page page-id-173 page-child parent-pageid-13 page-template page-template-only-body page-template-only-body-php" itemscope itemtype="http://schema.org/WebPage">
+
+        <div id="container">
+
+            <header class="header" role="banner" itemscope itemtype="http://schema.org/WPHeader">
+
+                <div id="inner-header" class="wrap cf">
+
+                                        <p id="logo" class="h1 t-1of3 d-1of3" itemscope itemtype="http://schema.org/Organization"><a href="http://mobs.akinsparker.com" rel="nofollow">Mike O Brien Swim</a></p>
+
+
+
+                    <nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        <ul id="menu-main" class="nav top-nav cf"><li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a href="http://mobs.akinsparker.com/">Home</a></li>
+<li id="menu-item-17" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17"><a href="http://mobs.akinsparker.com/about/">About</a>
+<ul class="sub-menu">
+    <li id="menu-item-153" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153"><a href="http://mobs.akinsparker.com/sign-up/the-program/">The Program</a></li>
+    <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a href="http://mobs.akinsparker.com/gallery/">Gallery</a></li>
+    <li id="menu-item-170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170"><a href="http://mobs.akinsparker.com/about/testimonials/">Testimonials</a></li>
+    <li id="menu-item-158" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-158"><a href="http://mobs.akinsparker.com/about/contact/">Contact</a></li>
+</ul>
+</li>
+<li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16"><a href="http://mobs.akinsparker.com/instruction/">Instruction</a>
+<ul class="sub-menu">
+    <li id="menu-item-171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-171"><a href="http://mobs.akinsparker.com/instruction/mosi-method/">MOSI Method</a></li>
+    <li id="menu-item-172" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-172"><a href="http://mobs.akinsparker.com/hosts/">Hosts</a></li>
+</ul>
+</li>
+<li id="menu-item-20" class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-20"><a href="{{ path('signup') }}">Sign-Up</a></li>
+<li id="menu-item-175" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-173 current_page_item menu-item-175"><a href="{{ path('login') }}">Login</a></li>
+</ul>
+                    </nav>
+
+                </div>
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" preserveAspectRatio="xMidYMid meet" class="wave-top"
+     viewBox="0 0 1900 58.9" style="enable-background:new 0 0 1900 58.9;" xml:space="preserve">
+
+            <g id="Layer_2">
+                <path class="st0" d="M1916,19.1c0,0-271.5-9.1-574.5-9.1S751.7,51.4,535.1,51.4S-16.6,10.6-16.6,10.6l-0.5-9.9H1916V19.1z"/>
+            </g>
+
+            </svg>
+            </header>
+
+            <div id="content">
+
+                <div class="wrap cf">
+
+                        <main id="main" class="m-all t-all d-all cf" role="main" itemscope itemprop="mainContentOfPage" itemtype="http://schema.org/Blog">
+
+
+                            <article id="post-173" class="cf post-173 page type-page status-publish hentry" role="article" itemscope itemtype="http://schema.org/BlogPosting">
+
+
+                                <section class="entry-content cf" itemprop="articleBody">
+                                {% block content %}
+                                {% endblock %}
+                                                                    </section>
+
+                            </article>
+
+
+                        </main>
+
+                </div>
+
+            </div>
+            <footer class="footer" role="contentinfo" itemscope itemtype="http://schema.org/WPFooter">
+
+                            <div id="inner-footer" class="wrap cf" style="position: relative;">
+                            <a href="" class="fb-icon"><span></span></a>
+                            <p class="source-org copyright m-all t-1of3 d-1of2">&copy; 2015 Mike O Brien Swim. All Rights Reserved</p>
+
+
+                                <nav role="navigation" class="m-all t-2of3 d-1of2">
+                                    <div class="footer-links cf"><ul id="menu-footer" class="nav footer-nav cf"><li id="menu-item-33" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-33"><a href="http://mobs.akinsparker.com/support/">Support</a></li>
+            <li id="menu-item-32" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-32"><a href="http://mobs.akinsparker.com/terms-conditions/">Terms &#038; Conditions</a></li>
+            <li id="menu-item-31" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-31"><a href="http://mobs.akinsparker.com/privacy-policy/">Privacy Policy</a></li>
+            </ul></div>                 </nav>
+
+                            </div>
+
+                        </footer>
+
+                    </div>
+
+                                <!-- ShiftNav Main Toggle -->
+                    <div id="shiftnav-toggle-main" class="shiftnav-toggle-main-align-center shiftnav-toggle-edge-left shiftnav-toggle-icon-x shiftnav-toggle-main-align-center shiftnav-toggle-edge-left shiftnav-toggle-icon-x" data-shiftnav-target="shiftnav-main"><span id="shiftnav-toggle-main-button" class="shiftnav-toggle shiftnav-toggle-shiftnav-main shiftnav-toggle-burger" data-shiftnav-target="shiftnav-main"><i class="fa fa-bars"></i></span>    <span class="shiftnav-main-toggle-content shiftnav-toggle-main-block"><a href="http://mobs.akinsparker.com">Mike O Brien Swim</a></span></div>
+                <!-- /#shiftnav-toggle-main -->
+
+
+                <!-- ShiftNav #shiftnav-main -->
+                <div class="shiftnav shiftnav-nojs shiftnav-left-edge shiftnav-skin-light shiftnav-transition-standard" id="shiftnav-main" data-shiftnav-id="shiftnav-main">
+                    <div class="shiftnav-inner">
+                    <nav class="shiftnav-nav"><ul id="menu-main-1" class="shiftnav-menu shiftnav-targets-default shiftnav-targets-text-default shiftnav-targets-icon-default"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15 shiftnav-depth-0"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/">Home</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-17 shiftnav-sub- shiftnav-depth-0"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/about/">About</a>
+            <ul class="sub-menu sub-menu-1">
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-153 shiftnav-depth-1"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/sign-up/the-program/">The Program</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169 shiftnav-depth-1"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/gallery/">Gallery</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170 shiftnav-depth-1"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/about/testimonials/">Testimonials</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-158 shiftnav-depth-1"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/about/contact/">Contact</a></li><li class="shiftnav-retract"><a class="shiftnav-target"><i class="fa fa-chevron-left"></i> Back</a></li></ul>
+            </li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-16 shiftnav-sub- shiftnav-depth-0"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/instruction/">Instruction</a>
+            <ul class="sub-menu sub-menu-1">
+            <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-171 shiftnav-depth-1"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/instruction/mosi-method/">MOSI Method</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-172 shiftnav-depth-1"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/hosts/">Hosts</a></li><li class="shiftnav-retract"><a class="shiftnav-target"><i class="fa fa-chevron-left"></i> Back</a></li></ul>
+            </li><li class="menu-item menu-item-type-post_type menu-item-object-page current-page-ancestor current-page-parent menu-item-20 shiftnav-depth-0"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/sign-up/">Sign-Up</a></li><li class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-173 current_page_item menu-item-175 shiftnav-depth-0"><a class="shiftnav-target"  href="http://mobs.akinsparker.com/sign-up/login/">Login</a></li></ul></nav>       </div><!-- /.shiftnav-inner -->
+                </div><!-- /.shiftnav #shiftnav-main -->
+
+
+                <script type='text/javascript'>
+            /* <![CDATA[ */
+            var shiftnav_data = {"shift_body":"on","shift_body_wrapper":"","lock_body":"on","lock_body_x":"off","swipe_close":"on","swipe_open":"off","swipe_tolerance_x":"150","swipe_tolerance_y":"60","swipe_edge_proximity":"80","open_current":"off","collapse_accordions":"off","scroll_panel":"on","breakpoint":"768","touch_off_close":"on","scroll_offset":"100","disable_transforms":"off"};
+            /* ]]> */
+            </script>
+            <script type='text/javascript' src='http://mobs.akinsparker.com/wp-content/plugins/shiftnav-responsive-mobile-menu/assets/js/shiftnav.min.js'></script>
+            <script type='text/javascript' src='http://mobs.akinsparker.com/wp-content/themes/AkinsParker-MOBS/library/js/scripts.js'></script>
+
+                    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.5.6/slick.min.js"></script>
+
+                    <script type="text/javascript">
+                    jQuery(document).ready(function($){
+                      $('.slider-wrap').slick({
+                        autoplay: true,
+                        autoplaySpeed: 3000,
+                        arrows: false,
+                        draggable: false,
+                      });
+                    });
+                    </script>
+{% block script %}
+{% endblock %}
+                </body>
+
+            </html> <!-- end of site. what a ride! -->

@@ -1,0 +1,33 @@
+{% extends 'form.signup.html.twig' %}
+{%block progress_bar %}
+{% if signup_for == 'host' %}
+<div class="text-center">
+STEP 2 OF 5</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div>
+</div>
+{% elseif signup_for == 'guest' %}
+<div class="text-center">
+STEP 3 OF 4</div>
+<div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 75%;">75%</div>
+</div>
+{% endif %}
+{% endblock progress_bar %}
+
+{% block form %}
+{% if signup_for == 'guest' %}
+<h5>HOST NAME: {{ group.host.firstname }} {{ group.host.lastname }}</h5>
+<h5>HOST DATE: {{ group.startsAt|date("m/d/Y") }}</h5>
+<h5>HOST TIME: {{ group.startsAt|date("g A") }}</h5>
+<h5>HOST LOCATION: {{ group.host.address.street }}</h5>
+<h5>POOL INFO: {{ group.lesson.pool.accessinfo }}</h5>
+{% endif %}
+{{ form(form) }}
+{% if signup_for == 'host' %}
+   <a href="{{ path('signup_student') }}" class="btn btn-default">Prev</a>
+{% elseif signup_for == 'guest' %}
+<a href="{{ path('signup_guest_student', {'group':group.id}) }}" class="btn btn-default">Prev</a>
+{% endif %}
+
+{% endblock form %}

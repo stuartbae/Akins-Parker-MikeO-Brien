@@ -1,0 +1,58 @@
+{% extends 'form.signup.html.twig' %}
+{%block progress_bar %}
+{% endblock progress_bar %}
+{% block form %}
+{# {% if signup_for == 'guest' %}
+<h5>HOST NAME: {{ group.host.firstname }} {{ group.host.lastname }}</h5>
+<h5>HOST DATE: {{ group.startsAt|date("m/d/Y") }}</h5>
+<h5>HOST TIME: {{ group.startsAt|date("g A") }}</h5>
+<h5>HOST LOCATION: {{ group.host.address.street }}</h5>
+<h5>POOL INFO: {{ group.lesson.pool.accessinfo }}</h5>
+{% endif %} #}
+<div class="page-header"><h1><small>Account Info</small></h1></div>
+<div class="well">
+   <p><b>Login Name:</b> {{ user.email }}</p>
+</div>
+   {{ dump(user) }}
+
+<div class="page-header"><h1><small>
+   {% if signup_for=='host' %}
+      Host Info
+   {% elseif signup_for=='guest'%}
+      Parents Info
+   {% else %}{% endif %}
+</small></h1>
+</div>
+<address>
+  <strong>{{ user.firstname|capitalize }} {{ user.lastname|capitalize }} &
+         {{ user.spousefirstname|capitalize }} {{ user.spouselastname|capitalize }}
+  </strong><br>
+  {{ address.street }}<br>
+  {% if  address.street2|length > 0 %}{{ address.street2 }}<br>{% endif %}
+  {{ address.city }},{{ address.state }} {{ address.zip }}<br>
+  <abbr title="Mobile">Mobile:</abbr>{{ user.mobile }}<br>
+  <abbr title="Home">Home:</abbr>{{ user.mobile }}<br>
+</address>
+{{ dump(group_detail) }}
+
+<div class="page-header"><h1><small>Student Info</small></h1></div>
+{% for student in students %}
+<p><div><b>{{ student.name }}</b></div>
+   <div>Birthday: {{ student.birthdate|date('m/d/Y') }}</div>
+   <div>Experience: {{ student.level }}-----FIX THIS -------</div>
+   <div>Special Needs: {{ student.note }}</div>
+   <div>Preferences: -----FIX THIS------
+   {{ dump(group) }}
+   </div>
+   <div>{{ dump(student) }}</div>
+</p>
+{% endfor %}
+
+<div class="page-header"><h1><small>Payment Info</small></h1></div>
+<div class="well">
+   <h2>TOTAL: {{ total }} --- FIX THIS ----</h2>
+</div>
+{{ dump(payment) }}
+
+
+{% endblock form %}

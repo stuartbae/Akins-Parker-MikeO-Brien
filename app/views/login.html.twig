@@ -1,0 +1,21 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <div id="content">
+        <div class="wrap cf">
+
+        <h2>{{ 'Login'|trans }}</h2>
+            {% if error %}
+                <div class="alert alert-error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form action="{{ path('admin_login_check') }}" method="post" novalidate {{ form_enctype(form) }} class="form-vertical">
+                {{ form_widget(form) }}
+            </form>
+        </div>
+    <div>&nbsp;</div>
+    </div>
+
+{% endblock %}

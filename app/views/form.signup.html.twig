@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+<div class="row">
+    <h5>
+    {% if signup_for == 'host' %}
+        Register to host lessons at your private pool
+    {% elseif signup_for == 'guest' %}
+        Register to join a scheduled group hosted by your friend or neighbor
+    {% elseif signup_for == 'placement' %}
+        Register to be placed into an available group in your area
+    {% endif %}
+    </h5>
+
+    {% block progress_bar %}{% endblock progress_bar %}
+    {% set alertTypeAvaillable = [ 'info', 'success', 'warning', 'error'] %}
+    {% for alert in alertTypeAvaillable %}
+        {% for message in app.session.getFlashBag.get(alert) %}
+            <div class="alert alert-{{ alert }}" >
+                <button class="close" data-dismiss="alert">×</button>
+                {{ message|trans }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% block form %}{% endblock form %}
+</div>
+{% endblock content %}
+
