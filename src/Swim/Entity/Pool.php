@@ -6,6 +6,16 @@ class Pool
 {
    public $pool_id;
    public $address;
-   public $file;
+   protected $file;
    public $accessinfo;
+
+
+   public function getFile() {
+       return $this->file;
+   }
+
+   public function setFile(UploadedFile $file = null)
+   {
+       $this->file = $file;
+   }
 }
