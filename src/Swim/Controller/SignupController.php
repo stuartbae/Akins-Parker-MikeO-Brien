@@ -99,6 +99,7 @@ class SignupController
 
     public function guestSignupAction(Request $request, Application $app)
     {
+        $group = $request->attributes->get('group');
         $form = $app['form.factory']->create(new GroupCodeType());
 
         if ($request->isMethod('POST') === true) {
@@ -112,7 +113,7 @@ class SignupController
                     return $app->redirect($redirect);
                 } else {
                     $message = 'Please try again with a valid Group Code.';
-                    $app['session']->getFlashBag()->add('error', $message);
+                    $app['session']->getFlashBag()->add('danger', $message);
                 }
 
             }
