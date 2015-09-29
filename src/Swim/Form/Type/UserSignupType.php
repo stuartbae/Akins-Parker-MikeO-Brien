@@ -15,7 +15,6 @@ class UserSignupType extends AbstractType
     {
         $builder
             ->add('user', new UserType())
-            ->add('address', new AddressType())
             ->add('next', 'submit');
     }
 

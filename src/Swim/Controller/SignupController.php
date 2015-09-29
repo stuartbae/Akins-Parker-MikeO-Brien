@@ -300,25 +300,9 @@ class SignupController
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $form_data = $form->getData();
-                // dump($form_data);
-                // $user = $form_data['user'];
-                // $address = $form_data['address'];
-                // $user->setUsername($user->getEmail());
-                // $user->setRole('ROLE_USER');
-
-                // $new_user_id = $app['repository.user']->save($user);
-                // if($new_user_id) {
-                //     $address->user_id = $new_user_id;
-                    // $app['repository.user']->insertAddress($address);
                     $this->freezeUserSignup($app, $form_data);
                     $redirect = $app['url_generator']->generate('signup_student');
                     return $app->redirect($redirect);
-                // }
-                // else {
-                //     $message = 'User signup failed.';
-                //     $app['session']->getFlashBag()->add('error', $message);
-                // }
-
             }
         }
 

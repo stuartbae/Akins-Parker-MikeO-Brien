@@ -80,6 +80,12 @@ class User implements UserInterface
     protected $mobile;
     protected $home;
     protected $email;
+
+    /**
+     * address
+     *
+     * @var Swim\Entity\Address
+     **/
     protected $address;
 
     public function getFirstName()
@@ -276,7 +282,7 @@ class User implements UserInterface
      *
      * @return self
      */
-    public function setAddress($address)
+    public function setAddress(Address $address)
     {
         $this->address = $address;
 

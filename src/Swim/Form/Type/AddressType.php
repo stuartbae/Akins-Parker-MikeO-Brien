@@ -16,10 +16,6 @@ class AddressType extends AbstractType
                 // 'constraints' => new Assert\NotBlank(),
                 'label' => 'Street Address',
             ))
-            ->add('street2', 'text', array(
-                'label' => 'Address Line 2',
-                'required' => FALSE,
-            ))
             ->add('city', 'text', array(
                 'constraints' => new Assert\NotBlank(),
                 'label' => 'City',

@@ -12,7 +12,6 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-
             ->add('firstname', 'text', array(
                 'constraints' => new Assert\NotBlank(),
                 'label' => 'First',
@@ -23,33 +22,29 @@ class UserType extends AbstractType
 
             ))
             ->add('spouse_firstname', 'text', array(
-                'constraints' => new Assert\NotBlank(),
                 'label' => 'First',
-
+                'required' => false,
             ))
             ->add('spouse_lastname', 'text', array(
-                'constraints' => new Assert\NotBlank(),
                 'label' => 'Last',
-
+                'required' => false,
             ))
             ->add('mobile', 'text', array(
                 'constraints' => new Assert\NotBlank(),
                 'label' => 'Mobile Phone',
-
             ))
             ->add('home', 'text', array(
-                'constraints' => new Assert\NotBlank(),
                 'label' => 'Home Phone',
-
+                'required' => false,
             ))
+            ->add('address', new AddressType())
             ->add('email', 'email', array(
-                'constraints' => array(new Assert\NotBlank(), new Assert\Email()),
+                'constraints' => new Assert\Email(),
             ))
             ->add('password', 'repeated', array(
-               'constraints' => new Assert\GreaterThanOrEqual(6),
+               'constraints' => new Assert\Length(array('min' => 6)),
                'type'            => 'password',
                'invalid_message' => 'The password fields must match.',
-               'options'         => array('required' => true),
                'first_options'   => array('label' => 'Enter Password'),
                'second_options'  => array('label' => 'Confirm Password'),
            ));

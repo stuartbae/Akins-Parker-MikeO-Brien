@@ -23,6 +23,25 @@ STEP 2 OF 4</div>
 <h5>HOST LOCATION: {{ group.host.address.street }}</h5>
 <h5>POOL INFO: {{ group.lesson.pool.accessinfo }}</h5>
 {% endif %}
+{{ form_start(form)}}
+<div class="page-header"><h1><small>Parents Information</small></h1></div>
+<h4>Host Name</h4>
+{{ form_row(form.user.firstname) }}
+{{ form_row(form.user.lastname) }}
+<h4>Spouse Name</h4>
+{{ form_row(form.user.spouse_firstname) }}
+{{ form_row(form.user.spouse_lastname) }}
+<h4>Contat Info</h4>
+{{ form_row(form.user.mobile) }}
+{{ form_row(form.user.home) }}
+<div class="page-header"><h1><small>Address</small></h1></div>
+{{ form_row(form.user.address.street) }}
+{{ form_row(form.user.address.city) }}
+{{ form_row(form.user.address.state) }}
+{{ form_row(form.user.address.zip) }}
+<div class="page-header"><h1><small>Create your login account</small></h1></div>
+{{ form_row(form.user.email) }}
+{{ form_row(form.user.password) }}
 
-{{ form(form) }}
+{{ form_end(form)}}
 {% endblock form %}
