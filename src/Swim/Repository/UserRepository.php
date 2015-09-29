@@ -154,7 +154,7 @@ class UserRepository implements RepositoryInterface, UserProviderInterface
 
     public function findByUsername($username)
     {
-        $userName = $this->db->fetchAssoc('SELECT * FROM users WHERE username = ?', array($username));
+        $userData = $this->db->fetchAssoc('SELECT * FROM users WHERE username = ?', array($username));
         return $userData ? $this->buildUser($userData) : FALSE;
 
     }
