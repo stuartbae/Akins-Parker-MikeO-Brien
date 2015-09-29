@@ -222,7 +222,7 @@ class PoolRepository implements RepositoryInterface
         $pool->pool_id = $poolData['pool_id'];
         // $pool->setPool($pool);
         $pool->address = $address;
-        $pool->setFile($poolData['file']);
+        // $pool->setFile($poolData['file']);
         $pool->accessinfo = $poolData['access_info'];
         return $pool;
     }
