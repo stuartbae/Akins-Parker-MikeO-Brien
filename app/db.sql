@@ -1,8 +1,8 @@
 --
 -- Database: `musicbox`
 --
-CREATE DATABASE IF NOT EXISTS `swim` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
-USE `swim`;
+-- CREATE DATABASE IF NOT EXISTS `swim` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+-- USE `swim`;
 
 -- --------------------------------------------------------
 
@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `lessons` (
   `approved` tinyint(1) default NULL,
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL,
-  PRIMARY KEY (`lession_id`)
+  PRIMARY KEY (`lesson_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
@@ -133,14 +133,14 @@ CREATE TABLE IF NOT EXISTS `coupons` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6;
 
 
--- INSERT INTO exp_levels (level) values ('Does not swim');
--- INSERT INTO exp_levels (level) values ('Some swiming, not independent');
--- INSERT INTO exp_levels (level) values ('Returning student to this program');
--- INSERT INTO exp_levels (level) values ('Good basic skills, ready for stroke');
--- INSERT INTO exp_levels (level) values ('Advanced stroke technique');
---
--- Insert admin user
---
+INSERT INTO exp_levels (level) values ('Does not swim');
+INSERT INTO exp_levels (level) values ('Some swiming, not independent');
+INSERT INTO exp_levels (level) values ('Returning student to this program');
+INSERT INTO exp_levels (level) values ('Good basic skills, ready for stroke');
+INSERT INTO exp_levels (level) values ('Advanced stroke technique');
 
--- INSERT INTO `users` (`user_id`, `username`, `salt`, `password`, `firstname`, `lastname`, `spouse_firstname`, `spouse_lastname`, `mobile`, `home`, `email`, `role`, `created_at`) VALUES
--- (1, 'admin', '44550680455f35ccf1214b', 'HU1hjxyF5q8OORn2rwicGa4uY41BNBFUtdOwcz1GpgLvXZgcT6gUqOoiqHKQ4/VWBzWJ3eNlSdXfvk0OVsU6cw==', 'Stuart', 'Bae', NULL, NULL, NULL, NULL, 'stu.pae@gmail.com', 'ROLE_ADMIN', 1379889332);
+Insert admin user
+
+
+INSERT INTO `users` (`user_id`, `username`, `salt`, `password`, `firstname`, `lastname`, `spouse_firstname`, `spouse_lastname`, `mobile`, `home`, `email`, `role`, `created_at`) VALUES
+(1, 'admin', '44550680455f35ccf1214b', 'HU1hjxyF5q8OORn2rwicGa4uY41BNBFUtdOwcz1GpgLvXZgcT6gUqOoiqHKQ4/VWBzWJ3eNlSdXfvk0OVsU6cw==', 'Stuart', 'Bae', NULL, NULL, NULL, NULL, 'stu.pae@gmail.com', 'ROLE_ADMIN', 1379889332);

@@ -113,7 +113,7 @@ class SignupController
                     return $app->redirect($redirect);
                 } else {
                     $message = 'Please try again with a valid Group Code.';
-                    $app['session']->getFlashBag()->add('danger', $message);
+                    $app['session']->getFlashBag()->add('dangerzz', $message);
                 }
 
             }
@@ -479,7 +479,8 @@ class SignupController
         $signup_for = $group ? 'guest' : 'host';
 
         $user = $this->unfreezeUserSignup($app)['user'];
-        $address = $this->unfreezeUserSignup($app)['address'];
+        // $address = $this->unfreezeUserSignup($app)['address'];
+        $address = $user->getAddress();
         $group = $this->unfreezeGroupSignup($app);
         $students = $this->unfreezeStudentSignup($app)->getStudents();
         $group_detail = $this->unfreezeGroupDetailSignup($app);
