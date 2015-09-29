@@ -5,6 +5,7 @@ namespace Swim\Entity;
 class Address
 {
    protected $id;
+   protected $userId;
    protected $street;
    protected $street2;
    protected $city;
@@ -17,7 +18,7 @@ class Address
      *
      * @return mixed
      */
-    public function getId()
+    public function getAddressId()
     {
         return $this->id;
     }
@@ -29,7 +30,7 @@ class Address
      *
      * @return self
      */
-    public function setId($id)
+    public function setAddressId($id)
     {
         $this->id = $id;
 
@@ -176,6 +177,30 @@ class Address
     public function setType($type)
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Gets the value of user.
+     *
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Sets the value of user.
+     *
+     * @param mixed $user the user
+     *
+     * @return self
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
 
         return $this;
     }

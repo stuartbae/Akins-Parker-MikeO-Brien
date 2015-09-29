@@ -12,7 +12,7 @@
     </h5>
 
     {% block progress_bar %}{% endblock progress_bar %}
-    {% set alertTypeAvaillable = [ 'info', 'success', 'warning', 'error'] %}
+    {% set alertTypeAvaillable = [ 'info', 'success', 'warning', 'danger'] %}
     {% for alert in alertTypeAvaillable %}
         {% for message in app.session.getFlashBag.get(alert) %}
             <div class="alert alert-{{ alert }}" >

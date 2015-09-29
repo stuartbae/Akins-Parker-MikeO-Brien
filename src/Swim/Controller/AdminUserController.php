@@ -40,7 +40,6 @@ class AdminUserController
 
                 $user->setUsername($user->getEmail());
                 $user->setRole('ROLE_USER');
-                dump($user);exit();
 
                 $app['repository.user']->save($user);
                 $message = 'The user ' . $user->getUsername() . ' has been saved.';

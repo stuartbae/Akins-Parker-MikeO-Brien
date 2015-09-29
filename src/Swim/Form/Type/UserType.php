@@ -21,11 +21,11 @@ class UserType extends AbstractType
                 'label' => 'Last',
 
             ))
-            ->add('spouse_firstname', 'text', array(
+            ->add('spouseFirstname', 'text', array(
                 'label' => 'First',
                 'required' => false,
             ))
-            ->add('spouse_lastname', 'text', array(
+            ->add('spouseLastname', 'text', array(
                 'label' => 'Last',
                 'required' => false,
             ))

@@ -300,9 +300,26 @@ class SignupController
             $form->handleRequest($request);
             if ($form->isValid()) {
                 $form_data = $form->getData();
-                    $this->freezeUserSignup($app, $form_data);
-                    $redirect = $app['url_generator']->generate('signup_student');
+                $user = $form_data['user'];
+                //check the email is already been registered
+                if (false !== $app['repository.user']->findByUsername($user->getEmail())){
+                    $message = 'The email address has already been registered!';
+                    $app['session']->getFlashBag()->add('danger', $message);
+                    $redirect = $app['url_generator']->generate('signup_user');
                     return $app->redirect($redirect);
+                }
+                // set username with email, set ROLE
+                $user->setRole('ROLE_USER');
+                // try {
+                //     $user_id = $app['repository.user']->save($user);
+                //     $user->getAddress()->setUserId($user_id);
+                //     $app['repository.address']->save($user->getAddress());
+                // } catch (\Exception $e) {
+
+                // }
+                $this->freezeUserSignup($app, $form_data);
+                $redirect = $app['url_generator']->generate('signup_student');
+                return $app->redirect($redirect);
             }
         }
 
@@ -312,7 +329,6 @@ class SignupController
 
     public function studentSignupAction(Request $request, Application $app)
     {
-        // $app['session']->set('STUDENT_SIGNUP', null);exit();
         $user = $this->unfreezeUserSignup($app);
         if ( null == $user ) {
             $redirect = $app['url_generator']->generate('signup_user');

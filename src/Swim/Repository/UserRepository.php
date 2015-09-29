@@ -82,7 +82,7 @@ class UserRepository implements RepositoryInterface, UserProviderInterface
                 return $user_id;
             } catch (\Exception $e) {
                 dump($e);
-                return FALSE;
+                return false;
                 }
             }
 
@@ -152,6 +152,13 @@ class UserRepository implements RepositoryInterface, UserProviderInterface
         return $userData ? $this->buildUser($userData) : FALSE;
     }
 
+    public function findByUsername($username)
+    {
+        $userName = $this->db->fetchAssoc('SELECT * FROM users WHERE username = ?', array($username));
+        return $userData ? $this->buildUser($userData) : FALSE;
+
+    }
+
     public function getAddress($user_id)
     {
         // dump($user_id);
@@ -159,10 +166,14 @@ class UserRepository implements RepositoryInterface, UserProviderInterface
         return $userAddress ? $userAddress : FALSE;
     }
 
-    public function insertAddress($addressData)
+    public function insertAddress($address)
     {
-        // dump($user_id);
-       $this->db->insert('addresses', (array) $addressData);
+       // $addressData = array(
+       //  'user_id' => $address->getUserId();
+       //  'street' => $address->getUserId();
+
+       //  )
+       // $this->db->insert('addresses', (array) $address);
 
     }
 

@@ -13,7 +13,7 @@ class User implements UserInterface
      *
      * @var integer
      */
-    protected $user_id;
+    protected $id;
 
     /**
      * Username.
@@ -75,18 +75,18 @@ class User implements UserInterface
     // custom properties
     protected $firstname;
     protected $lastname;
-    protected $spouse_firstname;
-    protected $spouse_lastname;
+    protected $spouseFirstname;
+    protected $spouseLastname;
     protected $mobile;
     protected $home;
     protected $email;
+    protected $address;
 
     /**
      * address
      *
      * @var Swim\Entity\Address
      **/
-    protected $address;
 
     public function getFirstName()
     {
@@ -110,22 +110,22 @@ class User implements UserInterface
 
     public function getSpouseFirstName()
     {
-        return $this->spouse_firstname;
+        return $this->spouseFirstname;
     }
 
     public function setSpouseFirstName($firstname)
     {
-        $this->spouse_firstname = $firstname;
+        $this->spouseFirstname = ucwords($firstname);
     }
 
     public function getSpouseLastName()
     {
-        return $this->spouse_lastname;
+        return $this->spouseLastname;
     }
 
     public function setSpouseLastName($lastname)
     {
-        $this->spouse_lastname = $lastname;
+        $this->spouseLastname = ucwords($lastname);
     }
 
     public function getMobile()
@@ -156,16 +156,17 @@ class User implements UserInterface
     public function setEmail($email)
     {
         $this->email= $email;
+        $this->setUsername($email);
     }
 
     public function getUserId()
     {
-        return $this->user_id;
+        return $this->id;
     }
 
-    public function setUserId($user_id)
+    public function setUserId($id)
     {
-        $this->user_id = $user_id;
+        $this->Id = $id;
     }
 
     /**
@@ -173,7 +174,7 @@ class User implements UserInterface
      */
     public function getUsername()
     {
-        return $this->username;
+        return strtolower($this->email);
     }
 
     public function setUsername($username)

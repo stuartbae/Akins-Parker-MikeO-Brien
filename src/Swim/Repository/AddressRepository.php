@@ -22,11 +22,13 @@ class AddressRepository implements RepositoryInterface
     /**
      * @var \MusicBox\Repository\UserRepository
      */
+    // protected $userRepository;
 
     // public function __construct(Connection $db, $artistRepository, $userRepository)
     public function __construct(Connection $db)
     {
         $this->db = $db;
+        // $this->userRepository = $userRepository;
     }
 
     /**
@@ -37,20 +39,35 @@ class AddressRepository implements RepositoryInterface
     public function save($address)
     {
         $addressData = array(
-            'artist_id' => $address->getArtist()->getId(),
-            'user_id' => $address->getUser()->getId(),
+            'user_id' => $address->getUserId(),
+            'street' => $address->getStreet(),
+            'street2' => $address->getStreet2(),
+            'city' => $address->getCity(),
+            'state' => $address->getState(),
+            'zip' => $address->getZip(),
+            'billing' => $address->getType(),
         );
 
-        if ($address->getId()) {
-            $this->db->update('address', $addressData, array('address_id' => $address->getId()));
+        if ($address->getAddressId()) {
+            try {
+
+                $this->db->update('addresses', $addressData, array('address_id' => $address->getAddressId()));
+
+            } catch (\Exception $e) {
+                return false;
+            }
         } else {
             // The address is new, note the creation timestamp.
-            $addressData['created_at'] = time();
+            try {
+                $this->db->insert('addresses', $addressData);
+                // Get the id of the newly created address and set it on the entity.
+                $id = $this->db->lastInsertId();
+                $address->setAddressId($id);
 
-            $this->db->insert('address', $addressData);
-            // Get the id of the newly created address and set it on the entity.
-            $id = $this->db->lastInsertId();
-            $address->setId($id);
+            } catch (\Exception $e) {
+               dump($e); exit();
+                return false;
+            }
         }
     }
 
@@ -220,11 +237,17 @@ class AddressRepository implements RepositoryInterface
     protected function buildAddress($addressData)
     {
         // Load the related address and host
-        // $address = $this->addressRepository->find($addressData['address_id']);
+        // $user = $this->userRepository->find($addressData['user_id']);
 
         $address = new Address();
-        $address->street = $addressData['street'];
-        // $address->setAddress($address);
+        $address->setStreet($addressData['address_id']);
+        $address->setStreet($addressData['user_id']);
+        $address->setStreet($addressData['street']);
+        $address->setStreet2($addressData['street2']);
+        $address->setCity($addressData['city']);
+        $address->setState($addressData['state']);
+        $address->setZip($addressData['zip']);
+        $address->setType($addressData['billing']);
         return $address;
     }
 }
