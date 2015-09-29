@@ -29,7 +29,7 @@ class GroupDetailSignupType extends AbstractType
                     array('all', 'some', 'none'),
                     array('All', 'Some', 'None')),
                 'label' => 'I prefer to fill ___________ of the available spots in my group',
-                'expanded' => ture
+                'expanded' => true,
                 ))
             ->add('addition', 'choice', array(
                 'constraints' => new Assert\NotBlank(),
