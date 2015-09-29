@@ -99,6 +99,7 @@ class SignupController
 
     public function guestSignupAction(Request $request, Application $app)
     {
+        $group = $request->attributes->get('group');
         $form = $app['form.factory']->create(new GroupCodeType(), $code);
 
         if ($request->isMethod('POST') === true) {
