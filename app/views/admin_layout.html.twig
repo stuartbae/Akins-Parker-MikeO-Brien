@@ -1,16 +1,17 @@
 {% extends 'layout.html.twig' %}
-
 {% block secondaryNavigation %}
+    <h3>Admin Panel</h3>
     <div class="container">
+
         <ul class="nav nav-tabs">
-            <li {% if adminActive == 'artists' %}class="active"{% endif %}>
-                <a href="{{ path('admin_artists') }}">{{ 'Artists'|trans }}</a>
-            </li>
-            <li {% if adminActive == 'comments' %}class="active"{% endif %}>
-                <a href="{{ path('admin_comments') }}">{{ 'Comments'|trans }}</a>
-            </li>
             <li {% if adminActive == 'users' %}class="active"{% endif %}>
-                <a href="{{ path('admin_users') }}">{{ 'Users'|trans }}</a>
+                <a href="{{ path('admin_users') }}">{{ 'Registration'|trans }}</a>
+            </li>
+            <li {% if adminActive == 'menu2' %}class="active"{% endif %}>
+                <a href="{{ path('admin_users') }}">{{ 'Menu2'|trans }}</a>
+            </li>
+            <li {% if adminActive == 'menu3' %}class="active"{% endif %}>
+                <a href="{{ path('admin_users') }}">{{ 'Menu3'|trans }}</a>
             </li>
         </ul>
     </div>

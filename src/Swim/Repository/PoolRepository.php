@@ -39,12 +39,16 @@ class PoolRepository implements RepositoryInterface
     public function save($pool)
     {
         $poolData = array(
-            'artist_id' => $pool->getArtist()->getId(),
-            'user_id' => $pool->getUser()->getId(),
+            'address_id' => $pool->getAddress()->getId(),
+            'access_info' => $pool->getAccessInfo(),
         );
 
         if ($pool->getId()) {
             $this->db->update('pools', $poolData, array('pool_id' => $pool->getId()));
+            $newFile = $this->handleFileUpload($item);
+            if ($newFile) {
+                $poolData['image'] = $pool->getImage();
+            }
         } else {
             // The pool is new, note the creation timestamp.
             $poolData['created_at'] = time();
@@ -53,7 +57,16 @@ class PoolRepository implements RepositoryInterface
             // Get the id of the newly created pool and set it on the entity.
             $id = $this->db->lastInsertId();
             $pool->setId($id);
+
+            // If a new image was uploaded, update the pool with the new
+            // filename.
+            $newFile = $this->handleFileUpload($pool);
+            if ($newFile) {
+                $newData = array('image' => $pool->getImage());
+                $this->db->update('pools', $newData, array('pool_id' => $id));
+            }
         }
+
     }
 
     /**
@@ -113,28 +126,6 @@ class PoolRepository implements RepositoryInterface
     {
 
         return $this->db->fetchAll('SELECT pool_id, starts_at FROM pools WHERE closed=0');
-    }
-
-    /**
-     * Returns a collection of pools for the given artist id.
-     *
-     * @param integer $artistId
-     *   The artist id.
-     * @param integer $limit
-     *   The number of pools to return.
-     * @param integer $offset
-     *   The number of pools to skip.
-     * @param array $orderBy
-     *   Optionally, the order by info, in the $column => $direction format.
-     *
-     * @return array A collection of pools, keyed by pool id.
-     */
-    public function findAllByArtist($artistId, $limit, $offset = 0, $orderBy = array())
-    {
-        $conditions = array(
-            'artist_id' => $artistId,
-        );
-        return $this->getpool($conditions, $limit, $offset, $orderBy);
     }
 
 
@@ -219,11 +210,11 @@ class PoolRepository implements RepositoryInterface
         // $pool = $this->poolRepository->find($poolData['pool_id']);
 
         $pool = new Pool();
-        $pool->pool_id = $poolData['pool_id'];
+        $pool->setPoolId($poolData['pool_id']);
         // $pool->setPool($pool);
-        $pool->address = $address;
+        $pool->setAddress($address);
         // $pool->setFile($poolData['file']);
-        $pool->accessinfo = $poolData['access_info'];
+        $pool->setAccessinfo($poolData['access_info']);
         return $pool;
     }
 }

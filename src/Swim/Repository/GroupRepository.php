@@ -229,6 +229,7 @@ class GroupRepository implements RepositoryInterface
         $group->setId($groupData['group_id']);
         $group->setLesson($lesson);
         $group->setHost($host);
+        $group->setCode($groupData['group_code']);
         $startsAt = new \DateTime('@' . $groupData['starts_at']);
         $group->setStartsAt($startsAt);
         return $group;

@@ -2,11 +2,11 @@
 {% block content %}
 <div class="row">
     <h5>
-    {% if signup_for == 'host' %}
+    {% if mode == 'host' %}
         Register to host lessons at your private pool
-    {% elseif signup_for == 'guest' %}
+    {% elseif mode == 'guest' %}
         Register to join a scheduled group hosted by your friend or neighbor
-    {% elseif signup_for == 'placement' %}
+    {% elseif mode == 'place' %}
         Register to be placed into an available group in your area
     {% endif %}
     </h5>

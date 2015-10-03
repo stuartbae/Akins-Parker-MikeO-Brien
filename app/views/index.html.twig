@@ -1,4 +1,7 @@
 {% extends 'layout.html.twig' %}
 {% block content %}
+
+{% if is_granted('ROLE_ADMIN') %}
 <h1>hello</h1>
+{% endif %}
 {% endblock %}

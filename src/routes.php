@@ -13,11 +13,11 @@
 //         return $app['repository.comment']->find($id);
 //     }
 // });
-// $app['controllers']->convert('user', function ($id) use ($app) {
-//     if ($id) {
-//         return $app['repository.user']->find($id);
-//     }
-// });
+$app['controllers']->convert('user', function ($id) use ($app) {
+    if ($id) {
+        return $app['repository.user']->find($id);
+    }
+});
 $app['controllers']->convert('group', function ($id) use ($app) {
     if ($id) {
         return $app['repository.group']->find($id);
@@ -39,31 +39,82 @@ $app->get('/signup/reset', 'Swim\Controller\SignupController::resetAction')
 $app->match('/signup/user', 'Swim\Controller\SignupController::userSignupAction')
     ->bind('signup_user');
 
-$app->match('/signup/guest/reg', 'Swim\Controller\SignupController::guestRegAction')
-    ->bind('signup_guest_reg');
-$app->match('/signup/user/student', 'Swim\Controller\SignupController::studentSignupAction')
-    ->bind('signup_student');
-$app->match('/signup/user/student/group', 'Swim\Controller\SignupController::pickGroupAction')
-    ->bind('signup_student_pick_group');
-$app->match('/signup/user/student/group/detail', 'Swim\Controller\SignupController::groupDetailAction')
-    ->bind('signup_group_detail');
-$app->match('/signup/user/student/group/payment', 'Swim\Controller\SignupController::paymentAction')
-    ->bind('signup_payment');
-$app->match('/signup/user/student/group/payment/confirm', 'Swim\Controller\SignupController::confirmAction')
-    ->bind('signup_payment_confirm');
-
-$app->match('/signup/guest', 'Swim\Controller\SignupController::guestSignupAction')
+$app->match('/signup/guest/{group}', 'Swim\Controller\SignupController::guestSignupAction')
+    ->value('group', false)
     ->bind('signup_guest');
-$app->match('/signup/guest/user/{group}', 'Swim\Controller\SignupController::guestUserSignupAction')
-    ->bind('signup_guest_user');
-$app->match('/signup/guest/{group}', 'Swim\Controller\SignupController::guestStudentSignupAction')
+$app->match('/signup/user/{mode}/{group}','Swim\Controller\SignupController::userSignupAction')
+    ->value('group', false)
+    ->bind('signup_user');
+
+$app->match('/signup/student/{mode}/{group}', 'Swim\Controller\SignupController::studentSignupAction')
+    ->value('group', false)
+    ->bind('signup_student');
+$app->match('/signup/student/guest/{group}', 'Swim\Controller\SignupController::studentSignupAction')
+    ->value('mode', 'guest')->value('group', false)
     ->bind('signup_guest_student');
-$app->match('/signup/user/student/group/{group}', 'Swim\Controller\SignupController::guestPickGroupAction')
-    ->bind('signup_guest_student_pick_group');
-$app->match('/signup/user/student/group/payment/{group}', 'Swim\Controller\SignupController::guestPaymentAction')
+$app->match('/signup/student/host/{group}', 'Swim\Controller\SignupController::studentSignupAction')
+    ->value('mode', 'host')->value('group', false)
+    ->bind('signup_host_student');
+
+$app->match('/signup/group/{mode}/{group}', 'Swim\Controller\SignupController::pickGroupAction')
+    ->value('group', false)
+    ->bind('signup_pick_group');
+$app->match('/signup/group/guest/{group}', 'Swim\Controller\SignupController::pickGroupAction')
+    ->value('mode', 'guest')->value('group', false)
+    ->bind('signup_guest_pick_group');
+$app->match('/signup/group/host/{group}', 'Swim\Controller\SignupController::pickGroupAction')
+    ->value('mode', 'host')->value('host', false)
+    ->bind('signup_host_pick_group');
+
+$app->match('/signup/groupdetail/{mode}/{group}', 'Swim\Controller\SignupController::groupDetailAction')
+    ->value('group', false)
+    ->bind('signup_group_detail');
+// $app->match('/signup/group/detail/host/{group}', 'Swim\Controller\SignupController::groupDetailAction')
+//     ->value('mode', 'host')->value('group', false)
+//     ->bind('signup_host_group_detail');
+
+$app->match('/signup/payment/{mode}/{group}', 'Swim\Controller\SignupController::paymentAction')
+    ->value('group', false)
+    ->bind('signup_payment');
+$app->match('/signup/payment/host/{group}', 'Swim\Controller\SignupController::paymentAction')
+    ->value('mode', 'host')->value('group', false)
+    ->bind('signup_host_payment');
+$app->match('/signup/payment/guest/{group}', 'Swim\Controller\SignupController::paymentAction')
+    ->value('mode', 'guest')->value('group', false)
     ->bind('signup_guest_payment');
-$app->match('/signup/user/student/group/payment/confirm/{group}', 'Swim\Controller\SignupController::confirmAction')
+
+$app->match('/signup/confirm/{mode}/{group}', 'Swim\Controller\SignupController::confirmAction')
+    ->value('group', false)
+    ->bind('signup_payment_confirm');
+$app->match('/signup/confirm/host/{group}', 'Swim\Controller\SignupController::confirmAction')
+    ->value('mode', 'host')->value('group', false)
+    ->bind('signup_host_payment_confirm');
+$app->match('/signup/confirm/guest/{group}', 'Swim\Controller\SignupController::confirmtAction')
+    ->value('mode', 'guest')->value('group', false)
     ->bind('signup_guest_payment_confirm');
+// $app->match('/signup/student/host/{group}', 'Swim\Controller\SignupController::studentSignupAction')
+//     ->value('group', false)->bind('signup_host_student');
+
+// $app->match('/signup/host/group', 'Swim\Controller\SignupController::pickGroupAction')
+//     ->bind('signup_student_pick_group');
+// $app->match('/signup/host/group/detail', 'Swim\Controller\SignupController::groupDetailAction')
+//     ->bind('signup_group_detail');
+// $app->match('/signup/host/payment', 'Swim\Controller\SignupController::paymentAction')
+//     ->bind('signup_payment');
+// $app->match('/signup/host/confirm', 'Swim\Controller\SignupController::confirmAction')
+//     ->bind('signup_payment_confirm');
+
+
+// $app->match('/signup/guest/user/{group}', 'Swim\Controller\SignupController::guestUserSignupAction')
+//     ->bind('signup_guest_user');
+// $app->match('/signup/guest/student/{group}', 'Swim\Controller\SignupController::guestStudentSignupAction')
+//     ->bind('signup_guest_student');
+// $app->match('/signup/guest/group/{group}', 'Swim\Controller\SignupController::guestPickGroupAction')
+//     ->bind('signup_guest_student_pick_group');
+// $app->match('/signup/guest/payment/{group}', 'Swim\Controller\SignupController::guestPaymentAction')
+//     ->bind('signup_guest_payment');
+// $app->match('/signup/guest/confirm/{group}', 'Swim\Controller\SignupController::confirmAction')
+//     ->bind('signup_guest_payment_confirm');
 
 
 
@@ -113,5 +164,13 @@ $app->match('/admin/users/{user}/edit', 'Swim\Controller\AdminUserController::ed
     ->bind('admin_user_edit');
 $app->match('/admin/users/{user}/delete', 'Swim\Controller\AdminUserController::deleteAction')
     ->bind('admin_user_delete');
+
+$app->get('/api/users', 'Swim\Controller\ApiUserController::indexAction')
+    ->bind('api_users');
+$app->get('/api/user/{user}', 'Swim\Controller\ApiUserController::viewAction')
+    ->bind('api_user');
+$app->post('/api/user', 'Swim\Controller\ApiUserController::addAction');
+$app->put('/api/user/{user}', 'Swim\Controller\ApiUserController::editAction');
+$app->delete('/api/user/{user}', 'Swim\Controller\ApiUserController::deleteAction');
 
 

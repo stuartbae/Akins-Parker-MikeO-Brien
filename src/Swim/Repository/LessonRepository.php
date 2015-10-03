@@ -41,7 +41,6 @@ class LessonRepository implements RepositoryInterface
     public function save($lesson)
     {
         $lessonData = array(
-            'artist_id' => $lesson->getArtist()->getId(),
             'user_id' => $lesson->getUser()->getId(),
         );
 

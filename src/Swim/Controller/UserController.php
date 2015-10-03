@@ -17,13 +17,14 @@ class UserController
         $interval = $now->diff($user->getCreatedAt());
         $memberSince = $interval->format('%d days %H hours %I minutes ago');
         $limit = 60;
-        $likes = $app['repository.like']->findAllByUser($user->getId(), $limit);
+        // $likes = $app['repository.like']->findAllByUser($user->getId(), $limit);
         // Divide artists into groups of 6.
         $groupSize = 6;
         $groupedLikes = array();
         $progress = 0;
         while ($progress < $limit) {
-            $groupedLikes[] = array_slice($likes, $progress, $groupSize);
+            // $groupedLikes[] = array_slice($likes, $progress, $groupSize);
+            $groupedLikes[] = null;
             $progress += $groupSize;
         }
 

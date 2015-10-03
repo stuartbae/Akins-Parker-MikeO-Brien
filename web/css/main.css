@@ -32,3 +32,12 @@ list-style-type: none;
    padding-left: 0px;
 }
 
+#profile_fullname, #profile_spousename {
+   font-weight: bold;
+
+}
+
+#profile_spousename {
+   margin-bottom: 5px;
+
+}

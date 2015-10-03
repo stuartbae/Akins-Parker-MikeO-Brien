@@ -2,9 +2,9 @@
 {# {% set active = 'homepage' %} #}
 {% block content %}
 <ul>
-  <li><a href="{{ path('signup_user') }}">Host</a></li>
-  <li><a href="{{ path('signup_guest')}}">Guest</a></li>
-  <li><a href="{{ path('signup_placement') }}">Placement</a></li>
+  <li><a href="{{ path('signup_user', {'mode':'host'}) }}">Host</a></li>
+  <li><a href="{{ path('signup_guest') }}">Guest</a></li>
+  <li><a href="{{ path('signup_user', {'mode':'place'}) }}">Placement</a></li>
 </ul>
 {% endblock %}
 

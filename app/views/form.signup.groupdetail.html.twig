@@ -1,5 +1,4 @@
 {% extends 'form.signup.html.twig' %}
-{% set signup_for='host' %}
 {%block progress_bar %}
 <div class="text-center">STEP 4 OF 5</div>
 <div class="progress">
@@ -8,5 +7,5 @@
 {% endblock progress_bar %}
 {% block form %}
 {{ form(form) }}
-<a href="{{ path('signup_student_pick_group') }}" class="btn btn-default">Prev</a>
+<a href="{{ path('signup_pick_group', {'mode':mode, 'group':group.id}) }}" class="btn btn-default">Prev</a>
 {% endblock form %}

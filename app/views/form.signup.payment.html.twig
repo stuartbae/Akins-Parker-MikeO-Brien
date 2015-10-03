@@ -1,12 +1,12 @@
 {% extends 'form.signup.html.twig' %}
 {%block progress_bar %}
-{% if signup_for == 'host' %}
+{% if mode == 'host' %}
 <div class="text-center">
 STEP 5 OF 5</div>
 <div class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">100%</div>
 </div>
-{% elseif signup_for == 'guest' %}
+{% elseif mode == 'guest' or mode == 'place' %}
 <div class="text-center">
 STEP 4 OF 4</div>
 <div class="progress">
@@ -15,7 +15,7 @@ STEP 4 OF 4</div>
 {% endif %}
 {% endblock progress_bar %}
 {% block form %}
-{% if signup_for == 'guest' %}
+{% if mode == 'guest' %}
 <h5>HOST NAME: {{ group.host.firstname }} {{ group.host.lastname }}</h5>
 <h5>HOST DATE: {{ group.startsAt|date("m/d/Y") }}</h5>
 <h5>HOST TIME: {{ group.startsAt|date("g A") }}</h5>
@@ -33,25 +33,22 @@ STEP 4 OF 4</div>
 {{ form_row(form.fullpay) }}
 {{ form_row(form.coupon) }}
 <h3>Total: {{ deposit * quantity }}</h3>
-{# {{ form_row(form.address) }} #}
-{# <div class="well">
+{{ form_row(form.address) }}
+<div class="well">
     {{ form_row(form.card_number) }}
     {{ form_row(form.exp_month) }}
     {{ form_row(form.exp_year) }}
     {{ form_row(form.card_ccv) }}
     {{ form_row(form.card_name) }}
-
-</div> #}
+</div>
 </div>
 <small>I understand that my credit card will be charged the deposit amount of $180 (or full payment of $360 with early registration) when I submit this registration form. My submission of this registration form does not guarantee my requested date and time. Spots are filled on a first-come, first-served basis and not all requested times and locations may be available when this form is received. I understand I will be contacted when an opening becomes available and given the option to accept or decline the scheduled date/time or group in a timely manner (5 business days or less). Once my approval for the spot is given, I understand it is reserved for me and my deposit of $180 becomes non-refundable. I understand my balance will be charged to my credit card the day of the first lesson. If I need to cancel or change my reserved time, my deposit may be credited to another session within the same calendar year only if notice is given at least one month prior to my reserved start date. If I cancel or withdraw from a spot that has been reserved for me within one month of the start date. I understand that I will lose my deposit if the spot cannot be filled. If the opening is able to be filled, I may receive a credit towards another session within the same calendar year if available. I understand that each instructor has limited time and therefore make-up lessons for missed classes are not always available. For hosts: I understand that if I agree to host one or more groups, Mike O’Brien Swim, Inc. reserves the right to fill any openings one month prior to the start of the session (openings are defined as any spots for which a registration form and payment have not been received).</small>
 {{ form_row(form.terms) }}
 {{ form_label(form.submit) }}
 {# {{ form_errors(form.submit) }} #}
-{% if signup_for == 'host' %}
-<a href="{{ path('signup_group_detail') }}" class="btn btn-default">Prev</a>
-{% elseif signup_for == 'guest' %}
-<a href="{{ path('signup_guest_student_pick_group', {'group':group.id}) }}" class="btn btn-default">Prev</a>
-{% endif %}
+
+<a href="{{ path('signup_pick_group', {'mode':mode, 'group':group.id}) }}" class="btn btn-default">Prev</a>
 {{ form_widget(form.submit) }}
 {{ form_end(form) }}
 {% endblock form %}
+

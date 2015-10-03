@@ -13,7 +13,7 @@ class User implements UserInterface
      *
      * @var integer
      */
-    protected $id;
+    protected $userId;
 
     /**
      * Username.
@@ -88,6 +88,31 @@ class User implements UserInterface
      * @var Swim\Entity\Address
      **/
 
+    public function __construct()
+    {
+        $this->address = new Address();
+    }
+
+
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    public function setUserId($id)
+    {
+        $this->userId = $id;
+    }
+
+    public function getId()
+    {
+        return $this->userId;
+    }
+
+    public function setId($id)
+    {
+        $this->userId = $id;
+    }
     public function getFirstName()
     {
         return $this->firstname;
@@ -159,15 +184,6 @@ class User implements UserInterface
         $this->setUsername($email);
     }
 
-    public function getUserId()
-    {
-        return $this->id;
-    }
-
-    public function setUserId($id)
-    {
-        $this->Id = $id;
-    }
 
     /**
      * @inheritDoc
@@ -289,4 +305,15 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getFullName()
+    {
+        return implode(' ', array($this->firstname, $this->lastname) );
+    }
+
+    public function getSpouseName()
+    {
+        return implode(' ', array($this->spouseFirstname, $this->spouseLastname) );
+    }
+
 }

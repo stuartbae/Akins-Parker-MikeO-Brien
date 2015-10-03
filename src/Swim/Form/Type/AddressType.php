@@ -13,7 +13,7 @@ class AddressType extends AbstractType
     {
         $builder
             ->add('street', 'text', array(
-                // 'constraints' => new Assert\NotBlank(),
+                'constraints' => new Assert\NotBlank(),
                 'label' => 'Street Address',
             ))
             ->add('city', 'text', array(

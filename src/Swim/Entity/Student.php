@@ -1,6 +1,7 @@
 <?php
 
 namespace Swim\Entity;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class Student
 {
@@ -10,8 +11,6 @@ class Student
    public $birthdate;
    public $level;
    public $note;
-   public $created_at;
-
 
    public function getStudentId()
    {
@@ -32,6 +31,66 @@ class Student
    {
       $this->name = $name;
    }
+
+    /**
+     * Gets the value of user_id.
+     *
+     * @return mixed
+     */
+    public function getUserId()
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * Gets the value of birthdate.
+     *
+     * @return mixed
+     */
+    public function getBirthdate()
+    {
+        return $this->birthdate;
+    }
+
+    /**
+     * Gets the value of level.
+     *
+     * @return mixed
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * Gets the value of note.
+     *
+     * @return mixed
+     */
+    public function getNote()
+    {
+        return $this->note;
+    }
+
+    /**
+     * Gets the value of created_at.
+     *
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Gets the value of schdulePrefs.
+     *
+     * @return mixed
+     */
+    public function getSchdulePrefs()
+    {
+        return $this->schdulePrefs;
+    }
 }
 
 

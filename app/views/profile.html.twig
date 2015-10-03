@@ -12,7 +12,7 @@
                   <h1 id="user_name">{{ user.username|e }}</h1>
                   <dl class="dl-horizontal">
                       <dt>{{ 'email:'|e}}</dt>
-                      <dd>{{ user.mail|e }}</dd>
+                      <dd>{{ user.email|e }}</dd>
                       <dt>{{ 'member for:'|e }}</dt>
                       <dd>{{ memberSince }}</dd>
                   </dl>
@@ -28,7 +28,7 @@
               <div class="span2">
                 <a href="{{ path('artist', {'artist': like.artist.id}) }}" class="amazing_image">
                   <h6 class="photo_hover">{{ like.artist.name }}</h6>
-                  <img src="{{ app.request.basepath }}/img/artists/{{ like.artist.image }}">
+                  <img src="{{ app.request.basepath }}/img/{{ like.artist.image }}">
                 </a>
               </div>
             {% endfor %}

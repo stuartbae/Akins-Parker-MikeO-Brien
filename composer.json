@@ -11,10 +11,13 @@
         "symfony/twig-bridge": "~2.3",
         "symfony/validator": "~2.3",
         "swiftmailer/swiftmailer": "~5.0",
-        "stripe/stripe-php": "^3.4"
+        "symfony/yaml": "^2.7",
+        "authorizenet/authorizenet": "~1.8"
     },
     "require-dev": {
-        "symfony/var-dumper"    : "~2.7.0"
+        "symfony/var-dumper"    : "~2.7.0",
+        "goetas/xsd2php":"2.*@dev",
+        "goetas/xsd-reader":"2.*@dev"
     },
     "autoload": {
         "psr-0": {"Swim": "src/"}

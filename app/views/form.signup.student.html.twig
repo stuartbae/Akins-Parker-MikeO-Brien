@@ -1,12 +1,12 @@
 {% extends 'form.signup.html.twig' %}
 {%block progress_bar %}
-{% if signup_for == 'host' %}
+{% if mode == 'host' %}
 <div class="text-center">
 STEP 2 OF 5</div>
 <div class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div>
 </div>
-{% elseif signup_for == 'guest' %}
+{% elseif mode == 'guest' or mode == 'place' %}
 <div class="text-center">
 STEP 2 OF 4</div>
 <div class="progress">
@@ -16,7 +16,7 @@ STEP 2 OF 4</div>
 {% endblock progress_bar %}
 {% block form %}
 
-{% if signup_for == 'guest' %}
+{% if mode == 'guest' %}
 <h5>HOST NAME: {{ group.host.firstname }} {{ group.host.lastname }}</h5>
 <h5>HOST DATE: {{ group.startsAt|date("m/d/Y") }}</h5>
 <h5>HOST TIME: {{ group.startsAt|date("g A") }}</h5>
@@ -34,7 +34,7 @@ STEP 2 OF 4</div>
         </li>
     {% endfor %}
 </ul>
-<ul><li><a class="btn btn-default" href="{{ path('signup_user')}}">Prev</a>{{ form_row(form.next) }}</ul></li>
+<ul><li><a class="btn btn-default" href="{{ path('signup_user', {'mode':mode})}}">Prev</a>{{ form_row(form.next) }}</ul></li>
 {{ form_end(form) }}
 {% endblock form %}
 

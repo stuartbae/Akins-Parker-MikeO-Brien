@@ -1,12 +1,12 @@
 {% extends 'form.signup.html.twig' %}
 {%block progress_bar %}
-{% if signup_for == 'host' %}
+{% if mode == 'host' %}
 <div class="text-center">
 STEP 2 OF 5</div>
 <div class="progress">
     <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">40%</div>
 </div>
-{% elseif signup_for == 'guest' %}
+{% elseif mode == 'guest' or mode == 'place' %}
 <div class="text-center">
 STEP 3 OF 4</div>
 <div class="progress">
@@ -16,18 +16,75 @@ STEP 3 OF 4</div>
 {% endblock progress_bar %}
 
 {% block form %}
-{% if signup_for == 'guest' %}
+{% if mode == 'guest' %}
 <h5>HOST NAME: {{ group.host.firstname }} {{ group.host.lastname }}</h5>
 <h5>HOST DATE: {{ group.startsAt|date("m/d/Y") }}</h5>
 <h5>HOST TIME: {{ group.startsAt|date("g A") }}</h5>
 <h5>HOST LOCATION: {{ group.host.address.street }}</h5>
 <h5>POOL INFO: {{ group.lesson.pool.accessinfo }}</h5>
 {% endif %}
-{{ form(form) }}
-{% if signup_for == 'host' %}
-   <a href="{{ path('signup_student') }}" class="btn btn-default">Prev</a>
-{% elseif signup_for == 'guest' %}
-<a href="{{ path('signup_guest_student', {'group':group.id}) }}" class="btn btn-default">Prev</a>
-{% endif %}
+{% for student in students %}
+   <div class="page-header"><h3>{{ student.name|capitalize }}</h3></div>
+   <form method="POST">
+   {% for i in 1..3 %}
+      <h4>Preference {{ i }}</h4>
+      <div id="{{ student.studentId }}">
+         <div class="pref{{ i }}">
+            {# <select id="select_{{student.studentId}}">
+               {% for key, label in open_days %}
+               <option id="check_{{key}}" value="c_{{key}}">{{label}}</option>
+               {% endfor %}
+            </select> #}
+               {% for key, label in open_groups %}
+               <div class="checkbox"><input class="c_{{label|date('md')}}" name="{{student.studentId}}[]" type="checkbox" value="{{key}}">{{label|date('l h:i A')}}</div>
+               {% endfor %}
+         </div>
+      </div>
+   {% endfor %}
+      <br>
+{% endfor %}
 
+{% if mode == 'host' %}
+<a href="{{ path('signup_student', {'mode':mode, 'group':group.id}) }}" class="btn btn-default">Prev</a>
+{% elseif mode == 'guest'%}
+<a href="{{ path('signup_student', {'mode':mode, 'group':group.id}) }}" class="btn btn-default">Prev</a>
+{% elseif mode == 'place' %}
+<a href="{{ path('signup_student', {'mode':mode, 'group':group.id}) }}" class="btn btn-default">Prev</a>
+{% else %}
+{% endif %}<input type="submit" value="Next"></form>
+
+
+{# {{ dump(students, open_groups, open_days) }} #}
 {% endblock form %}
+
+{% block script %}
+<script>
+jQuery(document).ready(function() {
+   // $('.checkbox').hide();
+// {% for student in students%}
+//    $("#sel_pref1_{{student.studentId}}").change(function(){
+//       $(".pref1 > #sel_pref1_{{student.studentId}} > #" + this.value).hide();
+//       // $("#{{student.studentId}} > #pref1 > #{{student.studentId}} option:not(:selected)").each(function(index, value){
+//       //    $("#pref1 > ." + this.value).hide();
+//       // });
+//       console.log(this.value);
+//    });
+
+//    $("#select_pref2").change(function(){
+//         $("#pref2 > ." + this.value).show();
+//         $("#open_group_pref2 option:not(:selected)").each(function(index, value){
+//            $("#pref2 > ." + this.value).hide();
+//         });
+//      });
+
+//    $(".open_group_pref3").change(function(){
+//          $("#pref3 > ." + this.value).show();
+//          $("#open_group_pref3 option:not(:selected)").each(function(index, value){
+//             $("#pref3 > ." + this.value).hide();
+//          });
+//    });
+// {% endfor %}
+
+});
+</script>
+{% endblock script %}

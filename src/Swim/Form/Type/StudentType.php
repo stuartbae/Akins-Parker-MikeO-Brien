@@ -40,7 +40,7 @@ class StudentType extends AbstractType
                  'constraints' => new Assert\Date(),
                  'widget' => 'choice',
                  'format' => 'MM / dd / yyyy',
-                 'years' => range(1985, date('Y')),
+                 'years' => array_reverse(range(2002, date('Y'))),
             ))
             ->add('level', 'choice', array(
                 'constraints' => new Assert\NotBlank(),

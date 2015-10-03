@@ -12,6 +12,9 @@ class IndexController
     public function indexAction(Request $request, Application $app)
     {
 
+        $token = $app['security']->getToken();
+        $user = $token->getUser();
+
         $data = array();
         return $app['twig']->render('index.html.twig', $data);
     }
