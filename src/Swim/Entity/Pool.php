@@ -18,7 +18,7 @@ class Pool
      *
      * @return mixed
      */
-    public function getPoolId()
+    public function getId()
     {
         return $this->pool_id;
     }
@@ -30,7 +30,7 @@ class Pool
      *
      * @return self
      */
-    public function setPoolId($pool_id)
+    public function setId($pool_id)
     {
         $this->pool_id = $pool_id;
 

@@ -48,10 +48,10 @@ class AddressRepository implements RepositoryInterface
             'billing' => $address->getType(),
         );
 
-        if ($address->getAddressId()) {
+        if ($address->getId()) {
             try {
 
-                $this->db->update('addresses', $addressData, array('address_id' => $address->getAddressId()));
+                $this->db->update('addresses', $addressData, array('address_id' => $address->getId()));
 
             } catch (\Exception $e) {
                 return false;

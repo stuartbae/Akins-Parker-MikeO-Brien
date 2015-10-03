@@ -18,7 +18,7 @@ class Address
      *
      * @return mixed
      */
-    public function getAddressId()
+    public function getId()
     {
         return $this->id;
     }
@@ -30,7 +30,7 @@ class Address
      *
      * @return self
      */
-    public function setAddressId($id)
+    public function setId($id)
     {
         $this->id = $id;
 

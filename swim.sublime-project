@@ -11,8 +11,8 @@
    ],
    "settings": {
       "xdebug": {
-            "url": "http://localhost:8000/",
-               "path_mapping": {"/Users/sopae/Projects/AkinsParker/" : "/Users/sopae/Projects/AkinsParker/"}
+            "url": "http://swim.dev/index.php",
+               "path_mapping": {"/Users/stuart/Projects/akinsparker/swim/" : "Users/stuart/Projects/akinsparker/swim/"}
 
       }
    }

@@ -195,7 +195,9 @@ class SignupController
                     }
                 }
                 $this->freezeStudentSignup($app, $new_signup);
-                $redirect = $app['url_generator']->generate('signup_pick_group', array('mode' => $mode, 'group' => $group->getId()));
+
+                $url = ($mode == 'guest') ? 'signup_payment' : 'signup_pick_group';
+                $redirect = $app['url_generator']->generate($url, array('mode' => $mode, 'group' => $group->getId()));
                 return $app->redirect($redirect);
             }
 
@@ -218,32 +220,11 @@ class SignupController
             $redirect = $app['url_generator']->generate('signup_student', array('mode' => $mode, 'group' => $group->getId()));
             return $app->redirect($redirect);
         }
+
         $students = $student_collection->getStudents()->getValues();
 
         $prev_pick = $this->unfreezeGroupSignup($app);
         $entity = $prev_pick ? $prev_pick : null;
-
-        // foreach ($students as $student) {
-        //     $type = new OpenGroupType($app, $student);
-        //     $form = $app['form.factory']->create($type, $entity);
-        //     $forms[$student->getStudentId()] = $form->createView();
-        // }
-
-        // $rows = $app['repository.group']->findAllOpen(100);
-        // foreach ($rows as $key => $_group) {
-
-        //     $open_groups[] = array(
-        //         'id' => date('m_d', $_group['starts_at']),
-        //         'label' => date('D h:i a' ,$_group['starts_at']),
-        //         'value' => $_group['group_id']
-        //      );
-
-        //     // $open_groups[$_group['group_id']] = date('D h:i a' ,$_group['starts_at']);
-        //     $label = date('m-d-Y', $_group['starts_at']);
-        //     $id = date('m_d', $_group['starts_at']);
-        //     $open_days [$id] = $label;
-        // }
-        // $open_days = array_unique($open_days);
 
         $rows = $app['repository.group']->findAllOpen(100);
         foreach ($rows as $key => $value) {
@@ -284,7 +265,7 @@ class SignupController
 
 
         $data = array(
-            'forms' => $forms,
+            // 'forms' => $forms,
             'mode' => $mode,
             'group' => $group,
             'students' => $students,
@@ -337,7 +318,7 @@ class SignupController
     {
         $group = $group ? $request->attributes->get('group') : new Group();
         $group_pick = $this->unfreezeGroupSignup($app);
-        if ( null == $group_pick ) {
+        if ( $mode != 'guest' && null == $group_pick ) {
             $redirect = $app['url_generator']->generate('signup_student_pick_group', array('mode' => $mode, 'group' => $group->getId()));
             return $app->redirect($redirect);
         }
@@ -452,9 +433,9 @@ class SignupController
             $group_code = $group ? $group->getCode() : null;
 
             foreach ($students as $student) {
-                foreach($reg_group[$student->student_id] as $group_id) {
+                if (null !== $group_code ) {
                     $app['db']->insert('signups', array(
-                        'group_id' => $group_id,
+                        'group_id' => $group->getId(),
                         'parent_id' => $user_id,
                         'student_name' => $student->name,
                         'student_dob' => $student->birthdate->getTimestamp(),
@@ -464,8 +445,26 @@ class SignupController
                         'discount' => $discount,
                         'group_code' => $group_code,
                         'created_at' => time()
-                    ));
+                        ));
                 }
+                else {
+                    foreach($reg_group[$student->student_id] as $group_id) {
+                        $app['db']->insert('signups', array(
+                            'group_id' => $group_id,
+                            'parent_id' => $user_id,
+                            'student_name' => $student->name,
+                            'student_dob' => $student->birthdate->getTimestamp(),
+                            'level_id' => $student->level,
+                            'note' => $student->note,
+                            'deposit' => $deposit,
+                            'discount' => $discount,
+                            'group_code' => $group_code,
+                            'created_at' => time()
+                        ));
+                    }
+
+                }
+
             }
             return true;
         } catch (Exception $e) {

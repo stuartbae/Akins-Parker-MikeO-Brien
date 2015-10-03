@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "hash": "a387d276bb55020dc8168d22d85ff626",
+    "content-hash": "3c0dddd21ddbcf7e088355ef561c3c7a",
     "packages": [
         {
             "name": "authorizenet/authorizenet",
