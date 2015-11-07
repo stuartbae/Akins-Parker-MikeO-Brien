@@ -32,5 +32,3 @@ $app['swiftmailer.options'] = array(
     'encryption' => null,
     'auth_mode' => null
 );
-
-$app['stripe.api.key'] = 'sk_live_VriP0PI1kQUXY2vYVnvKvLZT';
